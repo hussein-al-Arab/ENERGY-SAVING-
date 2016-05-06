@@ -1,0 +1,24 @@
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(10,GPIO.OUT)
+GPIO.setup(8,GPIO.IN)
+GPIO.setup(12,GPIO.IN)
+GPIO.setup(22,GPIO.OUT)
+GPIO.setup(16,GPIO.IN)
+GPIO.setup(18,GPIO.IN)
+while True:
+	if (GPIO.input(8)==GPIO.input(12)):
+		GPIO.output(10, False)
+		time.sleep(0.001)
+	elif (GPIO.input(8)!=GPIO.input(12)):
+		GPIO.output(10, True)
+		time.sleep(0.001)
+	if (GPIO.input(16)==GPIO.input(18)):
+		GPIO.output(22, False)
+		time.sleep(0.001)
+	elif (GPIO.input(16)!=GPIO.input(18)):
+		GPIO.output(22, True)
+		time.sleep(0.001)
+
